@@ -11,17 +11,17 @@ export default function onMessageDelete(
   }
   if (!message) {
     //@ts-ignore
-    channel.send("【緊急】有刪除痕跡但卻完全無法搜到此訊息");
+    // channel.send("【緊急】有刪除痕跡但卻完全無法搜到此訊息");
     return;
   }
   if (!message.author) {
-    const time = message.createdAt
-      .toISOString()
-      .replace(/T/, " ") // replace T with a space
-      .replace(/\..+/, "");
+    // const time = message.createdAt
+    //   .toISOString()
+    //   .replace(/T/, " ") // replace T with a space
+    //   .replace(/\..+/, "");
 
     //@ts-ignore
-    channel.send(`【緊急】於${time} 有刪除痕跡但搜索不到刪除者`);
+    // channel.send(`【緊急】於${time} 有刪除痕跡但搜索不到刪除者`);
     return;
   }
 

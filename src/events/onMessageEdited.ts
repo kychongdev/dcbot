@@ -15,7 +15,7 @@ export default function onMessageEdit(
   }
   if (!message) {
     //@ts-ignore
-    channel.send("【緊急】有编辑痕跡但卻完全無法搜到此訊息");
+    // channel.send("【緊急】有编辑痕跡但卻完全無法搜到此訊息");
     return;
   }
 
