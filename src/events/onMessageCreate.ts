@@ -46,7 +46,7 @@ export default function onMessageCreate(
         .replace(/\..+/, ""),
     };
 
-    if (joinedDate < tooEarly) {
+    if (joinedDate > tooEarly) {
       const createMessageEmbed = new EmbedBuilder()
         .setColor(0x0099ff)
         .setTitle(`【注意】用戶${user.id}`)
@@ -55,6 +55,10 @@ export default function onMessageCreate(
           { name: "進群日期", value: registeredDate },
           { name: "內容", value: user.content },
           { name: "作者", value: `<@${user.id}>` },
+          {
+            name: "訊息地址",
+            value: `https://discord.com/channels/${message.guildId}/${message.channelId}/${message.id}`,
+          },
           { name: "訊息日期", value: user.createdAt },
         )
         .setTimestamp(new Date());

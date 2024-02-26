@@ -5,10 +5,6 @@ export default function onMessageDelete(
   message: Message<boolean> | PartialMessage,
 ) {
   const channel = client.channels.cache.get("958360791898275923");
-  const now = new Date()
-    .toISOString()
-    .replace(/T/, " ") // replace T with a space
-    .replace(/\..+/, "");
 
   if (message.author?.bot) {
     return;
