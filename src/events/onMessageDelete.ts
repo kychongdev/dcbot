@@ -5,6 +5,10 @@ export default function onMessageDelete(
   message: Message<boolean> | PartialMessage,
 ) {
   const channel = client.channels.cache.get("958360791898275923");
+  const now = new Date()
+    .toISOString()
+    .replace(/T/, " ") // replace T with a space
+    .replace(/\..+/, "");
 
   if (message.author?.bot) {
     return;
@@ -30,10 +34,7 @@ export default function onMessageDelete(
 
   if (message.content) {
     const user = {
-      id:
-        message.author && message.author.id
-          ? message.author.id
-          : "已經失去紀錄",
+      id: message.author.id ? message.author.id : "已經失去紀錄",
       avatarUrl:
         message.author.id && message.author.avatar
           ? `https://cdn.discordapp.com/avatars/${message.author?.id}/${message.author?.avatar}`
@@ -53,8 +54,9 @@ export default function onMessageDelete(
       .addFields(
         { name: "內容", value: user.deletedContent },
         { name: "作者", value: `<@${user.id}>` },
-        { name: "刪除日期", value: user.createdAt },
-      );
+        { name: "訊息日期", value: user.createdAt },
+      )
+      .setTimestamp(new Date());
     //@ts-ignore
     channel.send({ embeds: [deleteMessageEmbed] });
   }
