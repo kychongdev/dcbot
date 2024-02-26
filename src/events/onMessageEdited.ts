@@ -4,7 +4,6 @@ import { client } from "../app";
 export default function onMessageEdit(
   message: Message<boolean> | PartialMessage,
 ) {
-  console.log(message);
   const channel = client.channels.cache.get("958360791898275923");
   const now = new Date()
     .toISOString()
