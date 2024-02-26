@@ -2,9 +2,10 @@
 //
 import { Client, Events, Partials, GatewayIntentBits } from "discord.js";
 import onMessageDelete from "./events/onMessageDelete";
+import onMessageEdit from "./events/onMessageEdited";
 
 // Create a new client instance
-const client = new Client({
+export const client = new Client({
   intents: [
     GatewayIntentBits.DirectMessages,
     GatewayIntentBits.Guilds,
@@ -27,6 +28,7 @@ client.once(Events.ClientReady, (readyClient) => {
 });
 
 client.on(Events.MessageDelete, onMessageDelete);
+client.on(Events.MessageUpdate, onMessageEdit);
 
 // Log in to Discord with your client's token
 client.login(process.env.TOKEN);
