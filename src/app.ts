@@ -25,7 +25,11 @@ export const client = new Client({
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
 // It makes some properties non-nullable.
 client.once(Events.ClientReady, (readyClient) => {
-  console.log(`Change! Logged in as ${readyClient.user.tag}`);
+  console.log("Activated");
+  //@ts-ignore
+  // channel.send(`<@&842646164511785001>`);
+  //@ts-ignore
+  // channel.send(`<@&1019130937704988725>`);
 });
 
 client.on(Events.MessageDelete, onMessageDelete);
