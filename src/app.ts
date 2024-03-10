@@ -24,10 +24,13 @@ export const client = new Client({
 // When the client is ready, run this code (only once).
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
 // It makes some properties non-nullable.
-client.once(Events.ClientReady, (readyClient) => {
-  console.log("Activated");
+client.once(Events.ClientReady, () => {
+  const channel = client.channels.cache.get(
+    process.env.SENDMESSAGECHANNEL as string,
+  );
   //@ts-ignore
-  // channel.send(`<@&842646164511785001>`);
+  channel.send("BOT啟動 <@1126733371704365067>");
+  // console.log("Activated");
   //@ts-ignore
   // channel.send(`<@&1019130937704988725>`);
 });

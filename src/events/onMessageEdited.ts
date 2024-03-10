@@ -73,7 +73,7 @@ export default function onMessageEdit(
 
     const editMessageEmbed = new EmbedBuilder()
       .setColor(0x0099ff)
-      .setTitle(`编辑訊息 by 用戶${user.id}>`)
+      .setTitle(`编辑訊息 by 用戶${user.id}`)
       .setImage(user.avatarUrl)
       .addFields(
         { name: "原內容", value: user.deletedContent },

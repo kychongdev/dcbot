@@ -48,7 +48,7 @@ export default function onMessageDelete(
 
       const deleteMessageEmbed = new EmbedBuilder()
         .setColor(0x0099ff)
-        .setTitle(`刪除訊息 by 用戶${user.id}>`)
+        .setTitle(`刪除訊息 by 用戶${user.id}`)
         .setImage(user.avatarUrl)
         .addFields(
           { name: "內容", value: user.deletedContent },
@@ -56,8 +56,22 @@ export default function onMessageDelete(
           { name: "訊息日期", value: user.createdAt },
         )
         .setTimestamp(new Date());
+
       //@ts-ignore
       channel.send({ embeds: [deleteMessageEmbed] });
+    }
+
+    if (
+      message?.member?.roles.cache.some(
+        (role) => role.id === process.env.BANROLE,
+      )
+    ) {
+      //@ts-ignore
+      channel.send(
+        `用戶 <@${message.author.id}>, ${message.author.username}已經擁有身份組了`,
+      );
+    } else {
+      message?.member?.roles.add(process.env.BANROLE as string);
     }
 
     if (message.attachments.size > 0) {
