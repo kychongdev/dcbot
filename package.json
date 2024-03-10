@@ -5,6 +5,7 @@
     "build:watch": "rollup -c -w",
     "watch": "rollup -c -w && nodemon --env-file=.env ./src/dist/app.js",
     "build": "rollup -c"
+    "start" : "node --env-file=.env ./src/dist/app.js",
   },
   "main": "src/dist/index.js",
   "dependencies": {
